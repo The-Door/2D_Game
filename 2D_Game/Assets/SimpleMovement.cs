@@ -5,9 +5,8 @@ using UnityEngine;
 public class SimpleMovement : MonoBehaviour
 {
     public float speed;
-    private float Move;
-
-    private Rigidbody2D rb;
+    float speedX, speedY;
+     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +16,9 @@ public class SimpleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(Move * speed, rb.velocity.y);
+       speedX = Input.GetAxisRaw("Horizontal") * speed;
+        speedY = Input.GetAxisRaw("Vertical") * speed;
+        rb.velocity = new Vector2(speedX, speedY);
+        speedY = speedY / 2;
     }
 }
